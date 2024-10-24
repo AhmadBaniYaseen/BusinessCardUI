@@ -1,0 +1,241 @@
+
+<section class="vh-100 gradient-custom" *ngIf="!isSecondSectionVisible">
+  <div class="container py-5 h-100">
+    <div class="row justify-content-center align-items-center h-100">
+      <div class="col-12 col-lg-9 col-xl-7">
+        <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+          <div class="card-body p-4 p-md-5">
+            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 text-center">Create New Card</h3>
+
+            <div class="row mb-4 justify-content-center">
+              <div class="col-md-12 text-center">
+                <label class="form-label" for="photo">Photo</label>
+              </div>
+              <div class="col-md-12 text-center">
+                <label for="photoUpload" style="cursor: pointer;">
+                  <img [src]="base64String" alt="upload Image" class="img-thumbnail shadow"
+                    style="max-width: 150px; border-radius: 50%;">
+                </label>
+                <input type="file" id="photoUpload" (change)="onFileSelected($event)" accept="image/*"
+                  style="display: none;">
+              </div>
+              <div class="col-md-12 text-center text-danger" *ngIf="createForm.get('photo')?.invalid && createForm.get('photo')?.touched&& createForm.get('photo')?.hasError('required')">
+                <small>Photo is required</small>
+              </div>
+            </div>
+
+
+
+            <form [formGroup]="createForm">
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <input type="text" id="firstName" formControlName="firstName"
+                      class="form-control form-control-lg rounded-pill" />
+                    <label class="form-label" for="firstName">First Name</label>
+                    <div *ngIf="createForm.get('firstName')?.touched && createForm.get('firstName')?.invalid" class="text-danger">
+                      <small *ngIf="createForm.get('firstName')?.hasError('required')">First Name is required</small>
+                      <small *ngIf="createForm.get('firstName')?.hasError('pattern')">Invalid First Name </small>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <input type="text" id="lastName" formControlName="lastName"
+                      class="form-control form-control-lg rounded-pill" />
+                    <label class="form-label" for="lastName">Last Name</label>
+                    <div *ngIf="createForm.get('lastName')?.touched && createForm.get('lastName')?.invalid" class="text-danger">
+                      <small *ngIf="createForm.get('lastName')?.hasError('required')">Last Name is required</small>
+                      <small *ngIf="createForm.get('lastName')?.hasError('pattern')">Invalid Last Name </small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <input type="date" class="form-control form-control-lg rounded-pill" id="dateOfBirth"
+                      formControlName="dateOfBirth" />
+                    <label for="dateOfBirth" class="form-label">Birthday</label>
+                    <div *ngIf="createForm.get('dateOfBirth')?.touched && createForm.get('dateOfBirth')?.invalid" class="text-danger">
+                      <small *ngIf="createForm.get('dateOfBirth')?.hasError('required')">Birthday is required</small>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-6 mb-4">
+                  <h6 class="mb-2 pb-1">Gender: </h6>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" formControlName="gender" id="femaleGender"
+                      value="FEMALE" />
+                    <label class="form-check-label" for="femaleGender">Female</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" formControlName="gender" id="maleGender"
+                      value="MALE" />
+                    <label class="form-check-label" for="maleGender">Male</label>
+                  </div>
+                  <div *ngIf="createForm.get('gender')?.touched && createForm.get('gender')?.invalid" class="text-danger">
+                    <small *ngIf="createForm.get('gender')?.hasError('required')">Gender is required</small>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <input type="email" id="emailAddress" formControlName="email"
+                      class="form-control form-control-lg rounded-pill" />
+                    <label class="form-label" for="emailAddress">Email</label>
+                  </div>
+                  <div *ngIf="createForm.get('email')?.touched && createForm.get('email')?.invalid" class="text-danger">
+                    <small *ngIf="createForm.get('email')?.hasError('required')">Email is required</small>
+                    <small *ngIf="createForm.get('email')?.hasError('pattern')">Invalid Email</small>
+                  </div>
+                </div>
+
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <input type="tel" id="phone" formControlName="phone"
+                      class="form-control form-control-lg rounded-pill" />
+                    <label class="form-label" for="phone">Phone Number</label>
+                  </div>
+                  <div *ngIf="createForm.get('phone')?.touched && createForm.get('phone')?.invalid" class="text-danger">
+                    <small *ngIf="createForm.get('phone')?.hasError('required')">Phone Number is required</small>
+                    <small *ngIf="createForm.get('phone')?.hasError('pattern')">Invalid Phone Number (10-15 digits only)</small>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6 mb-4">
+                <div class="form-outline">
+                  <input type="text" id="address" formControlName="address"
+                    class="form-control form-control-lg rounded-pill" />
+                  <label class="form-label" for="address">Address</label>
+                </div>
+                <div *ngIf="createForm.get('address')?.touched && createForm.get('address')?.invalid" class="text-danger">
+                  <small *ngIf="createForm.get('address')?.hasError('required')">Address is required</small>
+                  <small *ngIf="createForm.get('address')?.hasError('pattern')">Invalid Address (letters, numbers, commas, periods allowed)</small>
+                </div>
+              </div>
+
+              <hr>
+              <div class="row">
+                <div class="col-12">
+                  <label class="form-label" for="photo">Create New Card By csv & xml . </label>
+
+                  <input type="file" id="photo" (change)="onFileSelectedByCsvAndXml($event)" accept="csv/xml*"
+                    class="form-control form-control-lg rounded-pill">
+                </div>
+              </div>
+              <div class="mt-4 pt-2 text-center">
+                <button type="button" class="btn btn-primary btn-lg btn-block gradient-button"
+                  (click)="next()">Next</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="vh-100 gradient-custom" *ngIf="isSecondSectionVisible">
+  <div class="container py-5 h-100">
+    <div class="row justify-content-center align-items-center h-100">
+      <div class="col-12 col-lg-9 col-xl-7">
+        <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="border-radius: 15px;">
+          <div class="card-body p-4 p-md-5">
+            <h3 class="text-center mb-4 pb-2 pb-md-0 mb-md-5">Create New Card</h3>
+
+            <div class="row mb-4 justify-content-center">
+              <div class="col-md-12 text-center">
+                <label class="form-label" for="photo">Photo</label>
+              </div>
+              <div class="col-md-12 text-center">
+                <img [src]="photoImg" alt="Profile Image" class="img-thumbnail shadow"
+                  style="max-width: 150px; border-radius: 50%;">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-4">
+                <div data-mdb-input-init class="form-outline">
+                  <input type="text" id="firstName" [value]="this.createForm.get('firstName')?.value"
+                    class="form-control form-control-lg shadow-sm" [disabled]="true" />
+                  <label class="form-label" for="firstName">First Name</label>
+                </div>
+              </div>
+              <div class="col-md-6 mb-4">
+                <div data-mdb-input-init class="form-outline">
+                  <input type="text" id="lastName" [value]="this.createForm.get('lastName')?.value"
+                    class="form-control form-control-lg shadow-sm" [disabled]="true" />
+                  <label class="form-label" for="lastName">Last Name</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-4">
+                <div data-mdb-input-init class="form-outline datepicker w-100">
+                  <input type="text" id="dateOfBirth" [value]="this.createForm.get('dateOfBirth')?.value | date"
+                    class="form-control form-control-lg shadow-sm" [disabled]="true" />
+                  <label for="dateOfBirth" class="form-label">Birthday</label>
+                </div>
+              </div>
+
+              <div class="col-md-6 mb-4">
+                <h6 class="mb-2 pb-1">Gender: </h6>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" id="femaleGender" value="female"
+                    [checked]="this.createForm.get('gender')?.value === 'FEMALE'" [disabled]="true" />
+                  <label class="form-check-label" for="femaleGender">Female</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" id="maleGender" value="male"
+                    [checked]="this.createForm.get('gender')?.value === 'MALE'" [disabled]="true" />
+                  <label class="form-check-label" for="maleGender">Male</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-4">
+                <div data-mdb-input-init class="form-outline">
+                  <input type="email" id="emailAddress" [value]="this.createForm.get('email')?.value"
+                    class="form-control form-control-lg shadow-sm" [disabled]="true" />
+                  <label class="form-label" for="emailAddress">Email</label>
+                </div>
+              </div>
+              <div class="col-md-6 mb-4">
+                <div data-mdb-input-init class="form-outline">
+                  <input type="tel" id="phone" [value]="this.createForm.get('phone')?.value"
+                    class="form-control form-control-lg shadow-sm" [disabled]="true" />
+                  <label class="form-label" for="phone">Phone Number</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-12 mb-4 pb-2">
+              <div data-mdb-input-init class="form-outline">
+                <input type="text" id="address" [value]="this.createForm.get('address')?.value"
+                  class="form-control form-control-lg shadow-sm" [disabled]="true" />
+                <label class="form-label" for="address">Address</label>
+              </div>
+            </div>
+
+            <div class="mt-4 pt-2 text-center">
+              <button type="button" class="btn btn-secondary btn-lg btn-block gradient-button"
+                (click)="Back()">Back</button>
+              <button type="button" class="btn btn-primary btn-lg btn-block gradient-button"
+                (click)="saveCard()">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
