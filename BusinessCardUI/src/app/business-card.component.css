@@ -1,0 +1,149 @@
+.custom-card-container {
+    margin-top: 100px;
+}
+
+.custom-card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.custom-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+.custom-card-img {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    object-fit: cover;
+    height: 250px; /* Adjusted to give the image a larger presence */
+    width: 100%; /* Ensure the image takes up the full width */
+}
+.custom-card-img {
+    border-radius: 50%; /* لجعل الصورة دائرية */
+    width: 120px; /* الحجم المتجاوب */
+    height: 120px; 
+    object-fit: cover; /* لملء الصورة بشكل متساوٍ */
+    margin: 0 auto; /* لتوسيط الصورة داخل البطاقة */
+    border: 3px solid #ddd; /* إضافة حدود خفيفة */
+    padding: 5px; /* إضافة مسافة حول الصورة */
+    background-color: #f8f9fa; /* لون خلفية محايد حول الصورة */
+}
+
+.card-body h5 {
+    font-size: 20px;
+    color: #333;
+    font-weight: 600;
+}
+
+.card-text {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #555;
+}
+
+.custom-btn-delete {
+    background-color: #e74c3c;
+    border: none;
+    transition: background-color 0.2s ease;
+}
+
+.custom-btn-delete:hover {
+    background-color: #c0392b;
+}
+
+.custom-btn-export {
+    background-color: #3498db;
+    border: none;
+    transition: background-color 0.2s ease;
+}.custom-card-container {
+    margin-top: 100px;
+}
+
+.custom-card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.custom-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+.custom-card-img {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    object-fit: cover;
+    height: 250px;
+    width: 100%;
+}
+
+.custom-card-title {
+    font-size: 22px;
+    color: #333;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.card-text {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.custom-label {
+    font-weight: 600;
+    color: #444;
+    margin-right: 10px;
+    font-size: 15px;
+}
+
+.custom-value {
+    font-weight: 400;
+    color: #777;
+    font-size: 15px;
+}
+
+.custom-btn-delete {
+    background-color: #e74c3c;
+    border: none;
+    transition: background-color 0.2s ease;
+}
+
+.custom-btn-delete:hover {
+    background-color: #c0392b;
+}
+
+.custom-btn-export {
+    background-color: #3498db;
+    border: none;
+    transition: background-color 0.2s ease;
+}
+
+.custom-btn-export:hover {
+    background-color: #2980b9;
+}
+
+@media (max-width: 768px) {
+    .custom-card {
+        margin-bottom: 20px;
+    }
+    .custom-card-img {
+        height: 200px;
+    }
+}
+
+
+.custom-btn-export:hover {
+    background-color: #2980b9;
+}
+
+@media (max-width: 768px) {
+    .custom-card {
+        margin-bottom: 20px;
+    }
+    .custom-card-img {
+        height: 200px; /* Adjusted for smaller screens */
+    }
+}

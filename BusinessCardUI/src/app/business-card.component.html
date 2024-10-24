@@ -1,0 +1,67 @@
+ 
+  <div class="container mt-4">
+    <form [formGroup]="FilterBusinessCardForm">
+    <div class="row">
+
+      <div class="col-md-2">
+        <input type="text" formControlName="name" class="form-control" placeholder="Filter by Name">
+      </div>
+      <div class="col-md-2">
+        <input type="date" formControlName="dateOfBirth" class="form-control" placeholder="Filter by DOB" >
+      </div>
+      <div class="col-md-2">
+        <input type="text" class="form-control" placeholder="Filter by Phone" >
+      </div>
+      <div class="col-md-2">
+        <input type="text" formControlName="gender" class="form-control" placeholder="Filter by Gender" >
+      </div>
+      <div class="col-md-2">
+        <input type="text" formControlName="email" class="form-control" placeholder="Filter by Email" >
+      </div>
+      <div class="col-md-1">
+        <button class="btn btn-primary btn-block"  (click)="Search()" >Search</button>
+      </div>
+      <div class="col-md-1">
+        <button class="btn btn-secondary btn-block"  (click)="reset()" >reset</button>
+      </div>
+    </div>
+    </form>
+  </div>
+ 
+<div class="row g-4 justify-content-center px-4 custom-card-container">
+    @for (card of cards; track $index) {
+        <div class="col-md-6 col-lg-4">
+        <div class="card h-100">
+            <img src="{{ card.photo }}" class="card-img-top custom-card-img" alt="Skyscrapers" />
+            <div class="card-body">
+                <h5 class="card-title custom-card-title">{{ card.name }}</h5>
+                <p class="card-text">
+                    <span class="custom-label">Email:</span>
+                    <span class="custom-value">{{ card.email }}</span><br>
+                    <span class="custom-label">Gender:</span>
+                    <span class="custom-value">{{ card.gender }}</span><br>
+                    <span class="custom-label">Phone:</span>
+                    <span class="custom-value">{{ card.phone }}</span><br>
+                    <span class="custom-label">Address:</span>
+                    <span class="custom-value">{{ card.address }}</span><br>
+                    <span class="custom-label">Date of Birth:</span>
+                    <span class="custom-value">{{ card.dateOfBirth | date }}</span>
+                </p>
+                <div class="d-flex justify-content-between align-items-center mt-3">
+                    <button class="btn btn-danger btn-sm custom-btn-delete" (click)="onDelete(card)">Delete</button>
+                    <div class="dropdown">
+                      <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="exportDropdown{{ card.email }}" data-bs-toggle="dropdown" aria-expanded="false">
+                        Export
+                      </button>
+                      <ul class="dropdown-menu" >
+                        <li><a class="dropdown-item" (click)="onExportToXml(card)">Export to XML</a></li>
+                        <li><a class="dropdown-item" (click)="onExportToCsv(card)">Export to CSV</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          
+        }
+        </div>
