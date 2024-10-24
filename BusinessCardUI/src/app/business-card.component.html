@@ -1,33 +1,40 @@
  
-  <div class="container mt-4">
-    <form [formGroup]="FilterBusinessCardForm">
-    <div class="row">
+ <div class="container mt-4">
+  <form [formGroup]="FilterBusinessCardForm">
+  <div class="row">
 
-      <div class="col-md-2">
-        <input type="text" formControlName="name" class="form-control" placeholder="Filter by Name">
-      </div>
-      <div class="col-md-2">
-        <input type="date" formControlName="dateOfBirth" class="form-control" placeholder="Filter by DOB" >
-      </div>
-      <div class="col-md-2">
-        <input type="text" class="form-control" placeholder="Filter by Phone" >
-      </div>
-      <div class="col-md-2">
-        <input type="text" formControlName="gender" class="form-control" placeholder="Filter by Gender" >
-      </div>
-      <div class="col-md-2">
-        <input type="text" formControlName="email" class="form-control" placeholder="Filter by Email" >
-      </div>
-      <div class="col-md-1">
-        <button class="btn btn-primary btn-block"  (click)="Search()" >Search</button>
-      </div>
-      <div class="col-md-1">
-        <button class="btn btn-secondary btn-block"  (click)="reset()" >reset</button>
-      </div>
+    <div class="col-md-2">
+      <input type="text" formControlName="name" class="form-control" placeholder="Filter by Name">
     </div>
-    </form>
+    <div class="col-md-2">
+      <input type="date" formControlName="dateOfBirth" class="form-control" placeholder="Filter by DOB" >
+    </div>
+    <div class="col-md-2">
+      <input type="text" class="form-control" formControlName="phone" placeholder="Filter by Phone" >
+    </div>
+    <div class="col-md-2">
+      <!-- Dropdown for Gender -->
+      <select formControlName="gender" class="form-control custom-select-arrow" >
+        <option  value="" disabled selected>Filter by Gender</option>
+        <option value="MALE">Male</option>
+        <option value="FEMALE">Female</option>
+        
+      </select>
+      <i class="fas fa-chevron-down arrow-icon"></i>
+    </div>
+    <div class="col-md-2">
+      <input type="text" formControlName="email" class="form-control" placeholder="Filter by Email">
+    </div>
+    <div class="col-md-1">
+      <button class="btn btn-primary btn-block" (click)="Search()">Search</button>
+    </div>
+    <div class="col-md-1">
+      <button class="btn btn-secondary btn-block" (click)="reset()">reset</button>
+    </div>
   </div>
- 
+  </form>
+</div>
+
 <div class="row g-4 justify-content-center px-4 custom-card-container">
     @for (card of cards; track $index) {
         <div class="col-md-6 col-lg-4">
